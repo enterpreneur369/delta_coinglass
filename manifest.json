@@ -1,0 +1,29 @@
+{
+    "manifest_version": 3,
+    "name": "Coinglass Delta Display",
+    "author": "@game_designing_bg",
+    "version": "1.0",
+    "description": "Muestra el delta entre Long y Short en Coinglass Long/Short Ratio",
+    "permissions": [
+        "activeTab"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "https://www.coinglass.com/LongShortRatio*"
+            ],
+            "js": [
+                "content.js"
+            ],
+            "css": [
+                "styles.css"
+            ],
+            "run_at": "document_idle"
+        }
+    ],
+    "icons": {
+        "16": "delta.png",
+        "48": "delta.png",
+        "128": "delta.png"
+    }
+}
