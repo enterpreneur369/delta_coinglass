@@ -134,7 +134,7 @@ function updateDeltaDisplay(delta, percentage, longVolume, shortVolume) {
         deltaContainer.style.cssText = `
       position: fixed;
       top: 120px;
-      right: 20px;
+      left: 20px;
       background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(248, 250, 252, 0.98));
       border: 2px solid #e2e8f0;
       border-radius: 16px;
