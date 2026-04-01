@@ -2,7 +2,7 @@
     "manifest_version": 3,
     "name": "Coinglass Delta Display",
     "author": "@game_designing_bg",
-    "version": "1.0",
+    "version": "1.2",
     "description": "Muestra el delta entre Long y Short en Coinglass Long/Short Ratio",
     "permissions": [
         "activeTab"
