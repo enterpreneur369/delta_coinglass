@@ -126,6 +126,10 @@ function calculateAndDisplayDelta() {
 
 // Función para actualizar o crear la visualización del Delta
 function updateDeltaDisplay(delta, percentage, longVolume, shortVolume) {
+    // Guardar en storage para TradingView
+    chrome.storage.local.set({
+        coinglassDelta: { delta, longVolume, shortVolume, percentage, timestamp: Date.now() }
+    });
     let deltaContainer = document.getElementById('coinglass-delta-display');
 
     if (!deltaContainer) {
@@ -187,15 +191,15 @@ function initialize() {
         calculateAndDisplayDelta();
     }, 1500);
 
-    // Actualizar cada 3 segundos
+    // Actualizar cada 1 segundo
     setInterval(() => {
         calculateAndDisplayDelta();
-    }, 3000);
+    }, 1000);
 }
 
 // Observar cambios en elementos específicos
 const observer = new MutationObserver(() => {
-    setTimeout(calculateAndDisplayDelta, 500);
+    setTimeout(calculateAndDisplayDelta, 150);
 });
 
 // Esperar a que la página cargue

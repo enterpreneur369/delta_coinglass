@@ -5,7 +5,8 @@
     "version": "1.2",
     "description": "Muestra el delta entre Long y Short en Coinglass Long/Short Ratio",
     "permissions": [
-        "activeTab"
+        "activeTab",
+        "storage"
     ],
     "content_scripts": [
         {
@@ -17,6 +18,16 @@
             ],
             "css": [
                 "styles.css"
+            ],
+            "run_at": "document_idle"
+        },
+        {
+            "matches": [
+                "https://es.tradingview.com/chart/*",
+                "https://www.tradingview.com/chart/*"
+            ],
+            "js": [
+                "tradingview.js"
             ],
             "run_at": "document_idle"
         }
