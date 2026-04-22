@@ -39,6 +39,28 @@ function formatValue(value) {
 let isUpdating = false;
 let lastValues = { long: 0, short: 0 };
 
+function isSpanishPage() {
+    return window.location.pathname.startsWith('/es/');
+}
+
+function getLongShortI18n() {
+    if (isSpanishPage()) {
+        return {
+            title: 'Delta (Long - Short)',
+            longVolume: 'Volumen Long:',
+            shortVolume: 'Volumen Short:',
+            locale: 'es-ES'
+        };
+    }
+
+    return {
+        title: 'Delta (Long - Short)',
+        longVolume: 'Long Volume:',
+        shortVolume: 'Short Volume:',
+        locale: 'en-US'
+    };
+}
+
 // Función para buscar valores en los divs con clase "Number"
 function findVolumeValues() {
     let longVolume = 0;
@@ -155,10 +177,11 @@ function updateDeltaDisplay(delta, percentage, longVolume, shortVolume) {
     const color = delta >= 0 ? '#16c784' : '#ea3943';
     const sign = delta >= 0 ? '+' : '';
     const arrow = delta >= 0 ? '▲' : '▼';
+    const t = getLongShortI18n();
 
     deltaContainer.innerHTML = `
     <div style="font-size: 12px; color: #64748b; margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px;">
-      Delta (Long - Short)
+            ${t.title}
     </div>
     <div style="font-size: 28px; color: ${color}; font-weight: bold; margin-bottom: 8px;">
       ${sign}$${formatValue(delta)}
@@ -168,16 +191,16 @@ function updateDeltaDisplay(delta, percentage, longVolume, shortVolume) {
     </div>
     <div style="border-top: 1px solid #e2e8f0; padding-top: 12px; margin-top: 12px;">
       <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
-        <span style="font-size: 12px; color: #64748b;">Long Volume:</span>
+                <span style="font-size: 12px; color: #64748b;">${t.longVolume}</span>
         <span style="font-size: 12px; color: #16c784; font-weight: 600;">$${formatValue(longVolume)}</span>
       </div>
       <div style="display: flex; justify-content: space-between;">
-        <span style="font-size: 12px; color: #64748b;">Short Volume:</span>
+                <span style="font-size: 12px; color: #64748b;">${t.shortVolume}</span>
         <span style="font-size: 12px; color: #ea3943; font-weight: 600;">$${formatValue(shortVolume)}</span>
       </div>
     </div>
     <div style="font-size: 10px; color: #94a3b8; margin-top: 12px; text-align: center;">
-      ${new Date().toLocaleTimeString()}
+            ${new Date().toLocaleTimeString(t.locale)}
     </div>
   `;
 }
