@@ -1,6 +1,6 @@
 # Delta Coinglass Extension
 
-Extension para Edge/Chrome que conecta datos de Coinglass con tu flujo en TradingView.
+Extensión para Edge/Chrome que conecta datos de Coinglass con tu flujo en TradingView.
 
 ## Funcionalidades
 
